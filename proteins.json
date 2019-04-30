@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Alanine",
+        "symbol-3": "Ala",
+        "symbol-1": "A",
+        "weight": 89.10,
+        "formula": "C\u2083H\u2087NO\u2082",
+        "structure": "imgs/Ala.gif"
+    },
+    {
+        "name": "Arginine",
+        "symbol-3": "Arg",
+        "symbol-1": "R",
+        "weight": 174.20,
+        "formula": "C\u2086H\u2081\u2084N\u2084O\u2082",
+        "structure": "imgs/Arg.gif"
+    },
+    {
+        "name": "Asparagine",
+        "symbol-3": "Asn",
+        "symbol-1": "N",
+        "weight": 132.12,
+        "formula": "C\u2084H\u2088N\u2082O\u2083",
+        "structure": "imgs/Asn.gif"
+    },
+    {
+        "name": "Aspartic acid",
+        "symbol-3": "Asp",
+        "symbol-1": "D",
+        "weight": 133.11,
+        "formula": "C\u2084H\u2087NO\u2084",
+        "structure": "imgs/Asp.gif"
+    },{
+        "name": "Cysteine",
+        "symbol-3": "Cys",
+        "symbol-1": "C",
+        "weight": 121.16,
+        "formula": "C\u2083H\u2087NO\u2082S",
+        "structure": "imgs/Cys.gif"
+    },{
+        "name": "Glutamic acid",
+        "symbol-3": "Glu",
+        "symbol-1": "E",
+        "weight": 147.13,
+        "formula": "C\u2085H\u2089NO\u2084",
+        "structure": "imgs/Glu.gif"
+    },{
+        "name": "Glutamine",
+        "symbol-3": "Gln",
+        "symbol-1": "Q",
+        "weight": 146.15,
+        "formula": "C\u2085H\u2081\u2080N\u2082O\u2083",
+        "structure": "imgs/Gln.gif"
+    },{
+        "name": "Glycine",
+        "symbol-3": "Gly",
+        "symbol-1": "G",
+        "weight": 75.07,
+        "formula": "C\u2082H\u2085NO\u2082",
+        "structure": "imgs/Gly.gif"
+    },{
+        "name": "Histidine",
+        "symbol-3": "His",
+        "symbol-1": "H",
+        "weight": 155.16,
+        "formula": "C\u2086H\u2089N\u2083O\u2082",
+        "structure": "imgs/His.gif"
+    },{
+        "name": "Hydroxyproline",
+        "symbol-3": "Hyp",
+        "symbol-1": "O",
+        "weight": 131.13,
+        "formula": "C\u2085H\u2089NO\u2083",
+        "structure": "imgs/Hyp.gif"
+    },{
+        "name": "Isoleucine",
+        "symbol-3": "Ile",
+        "symbol-1": "I",
+        "weight": 131.18,
+        "formula": "C\u2086H\u2081\u2083NO\u2082",
+        "structure": "imgs/Ile.gif"
+    },{
+        "name": "Leucine",
+        "symbol-3": "Leu",
+        "symbol-1": "L",
+        "weight": 131.18,
+        "formula": "C\u2086H\u2081\u2083NO\u2082",
+        "structure": "imgs/Leu.gif"
+    },{
+        "name": "Lysine",
+        "symbol-3": "Lys",
+        "symbol-1": "K",
+        "weight": 146.19,
+        "formula": "C\u2086H\u2081\u2084N\u2082O\u2082",
+        "structure": "imgs/Lys.gif"
+    },{
+        "name": "Methionine",
+        "symbol-3": "Met",
+        "symbol-1": "M",
+        "weight": 149.21,
+        "formula": "C\u2085H\u2081\u2081NO\u2082S",
+        "structure": "imgs/Met.gif"
+    },{
+        "name": "Phenylalanine",
+        "symbol-3": "Phe",
+        "symbol-1": "F",
+        "weight": 165.19,
+        "formula": "C\u2089H\u2081\u2081NO\u2082",
+        "structure": "imgs/Phe.gif"
+    },{
+        "name": "Proline",
+        "symbol-3": "Pro",
+        "symbol-1": "P",
+        "weight": 115.13,
+        "formula": "C\u2085H\u2089NO\u2082",
+        "structure": "imgs/Pro.gif"
+    },{
+        "name": "Pyroglutamatic",
+        "symbol-3": "Glp",
+        "symbol-1": "U",
+        "weight": 139.11,
+        "formula": "C\u2085H\u2087NO\u2083",
+        "structure": "imgs/Glp.gif"
+    },{
+        "name": "Serine",
+        "symbol-3": "Ser",
+        "symbol-1": "S",
+        "weight": 105.09,
+        "formula": "C\u2083H\u2087NO\u2083",
+        "structure": "imgs/Ser.gif"
+    },{
+        "name": "Threonine",
+        "symbol-3": "Thr",
+        "symbol-1": "T",
+        "weight": 119.12,
+        "formula": "C\u2084H\u2089NO\u2083",
+        "structure": "imgs/Thr.gif"
+    },{
+        "name": "Tryptophan",
+        "symbol-3": "Trp",
+        "symbol-1": "W",
+        "weight": 204.23,
+        "formula": "C\u2081\u2081H\u2081\u2082N\u2082O\u2082",
+        "structure": "imgs/Trp.gif"
+    },{
+        "name": "Tyrosine",
+        "symbol-3": "Tyr",
+        "symbol-1": "Y",
+        "weight": 181.19,
+        "formula": "C\u2089H\u2081\u2081NO\u2083",
+        "structure": "imgs/Tyr.gif"
+    },{
+        "name": "Valine",
+        "symbol-3": "Val",
+        "symbol-1": "V",
+        "weight": 117.15,
+        "formula": "C\u2085H\u2081\u2081NO\u2082",
+        "structure": "imgs/Val.gif"
+    }
+]
