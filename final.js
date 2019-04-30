@@ -35,7 +35,7 @@ function constructBarGraph(protein_dict) {
   var proteins = Object.keys(protein_dict);
   var svgContainer = d3.select("#bar_svg");
 
-  var margin = 25;
+  var margin = 50;
   var height = document.getElementById("bar_svg").clientHeight;
   var width = document.getElementById("bar_svg").clientWidth;
 
@@ -55,7 +55,17 @@ function constructBarGraph(protein_dict) {
       .attr("width", xScale.bandwidth())
       .attr("y", d => yScale(parseInt(protein_dict[d])))
       .attr("height", d => height - margin - yScale(parseInt(protein_dict[d])))
-      .style("fill", "blue");
+      .attr("fill", "blue")
+      .on("mouseover", function(d) {
+            d3.select(this)
+            	.attr("fill", "red");
+        })
+      .on("mouseout", function(d, i) {
+            console.log("fired");
+            d3.select(this).attr("fill", function() {
+                return "blue";
+            });
+        });
 
   // add x axis
   svgContainer.append("g")
@@ -67,6 +77,14 @@ function constructBarGraph(protein_dict) {
               .attr("transform", "translate(" + margin +
                                    ",0)")
               .call(d3.axisLeft(yScale));
+
+  svgContainer.append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("x", 0 - (height / 2))
+              .attr("y", -25 + margin / 2)
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .text("Occurences of individual proteins in string");
 
 
 }
