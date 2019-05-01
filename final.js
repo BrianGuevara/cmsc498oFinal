@@ -62,12 +62,19 @@ function constructBarGraph(protein_dict) {
             	.attr("fill", "red");
         })
       .on("mouseout", function(d, i) {
-            d3.select(this).attr("fill", function() {
-                return "blue";
-            });
+            if (this != selectedBar){
+              d3.select(this).attr("fill", function() {
+                  return "blue";
+              });
+            }
         })
       .on("click", function(d){
-        getProteinData();
+        if (selectedBar){
+          d3.select(selectedBar).attr("fill", "blue");
+        }
+        d3.select(this).attr("fill", "red")
+        selectedBar = this;
+        getProteinData(d);
       });
 
   // add x axis
@@ -90,14 +97,43 @@ function constructBarGraph(protein_dict) {
               .text("Occurences of individual proteins in string");
 }
 
-function getProteinData() {
+function getProteinData(selected_protein) {
   fetch('http://localhost:8080/proteins.json')
- .then(response => response.json().then(json => parseData(json)))
+ .then(response => response.json().then(json => updateInfoPanel(json, selected_protein)))
  .catch(function (error){
    console.log("Error fetching data. ", error.message);
  });
 }
 
-function parseData(protein_info){
+function updateInfoPanel(protein_info, selected_protein){
   console.log(protein_info);
+  console.log(selected_protein);
+  var target = null;
+
+  for (var i = 0; i < protein_info.length; i++){
+    var protein = protein_info[i];
+
+    if (protein["symbol-1"] === selected_protein){
+      target = protein;
+      break;
+    }
+  }
+  var header = d3.select("#protein_name_header");
+  header.text(target["name"]);
+
+  var imgContainer = d3.select("#protein_image");
+  imgContainer.attr("src", target["structure"]);
+
+  var proteinName = d3.select("#protein_name");
+  proteinName.text(target["name"]);
+
+  var symbol3 = d3.select("#symbol3");
+  symbol3.text(target["symbol-3"]);
+
+  var symbol1 = d3.select("#symbol1");
+  symbol1.text(target["symbol-1"]);
+
+  var weight = d3.select("#weight");
+  weight.text(target["weight"]);
+
 }
