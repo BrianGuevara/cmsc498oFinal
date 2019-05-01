@@ -5,7 +5,7 @@
     <script src="http://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-	<div id="top_information_panel" style="width: 95vw; height: 45vh; overflow: hidden">
+	<div id="top_information_panel" style="width: 95vw; height: 45vh;">
 		<div id="bar_graph" style="width: 60vw; height: 45vh; display: inline-block;">
 			<svg id="bar_svg" style="height: 100%; width: 100%;">
 			</svg>
@@ -37,9 +37,15 @@
 				<h2 id="symbol1" style="color: red; padding-left: 5px; display: inline-block;">A</h2>
 			</div>
 			<div id="protein_weight_row" style="height: 10%; width: 100%;">
+				<h2 id="weight_label" style="padding-left: 25px;
+				color: white; display: inline-block;">
+				Weight:
+				</h2>
+				<h2 id="weight" style="color: red; padding-left: 5px; display: inline-block;">89.10</h2>
+			</div>
 		</div>
 	</div>
-	<div id="bottom_panel" style="width: 95vw; height: 45vh; padding-top: 3px; overflow: hidden">
+	<div id="bottom_panel" style="width: 95vw; height: 45vh; padding-top: 3px;">
     <div id="description_panel" style="width: 25vw; height: 45vh; background-color: green; display: inline-block;"></div>
 		<div id="mass_graph" style="width: 65vw; height: 45vh; background-color: purple; display: inline-block;"></div>
 	</div>
