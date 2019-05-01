@@ -1,4 +1,5 @@
 getData();
+var selectedBar = null;
 
 function getData() {
   // TODO: replace with proper code to fetch data from the server
@@ -61,11 +62,13 @@ function constructBarGraph(protein_dict) {
             	.attr("fill", "red");
         })
       .on("mouseout", function(d, i) {
-            console.log("fired");
             d3.select(this).attr("fill", function() {
                 return "blue";
             });
-        });
+        })
+      .on("click", function(d){
+        getProteinData();
+      });
 
   // add x axis
   svgContainer.append("g")
@@ -85,6 +88,16 @@ function constructBarGraph(protein_dict) {
               .attr("dy", "1em")
               .style("text-anchor", "middle")
               .text("Occurences of individual proteins in string");
+}
 
+function getProteinData() {
+  fetch('http://localhost:8080/proteins.json')
+ .then(response => response.json().then(json => parseData(json)))
+ .catch(function (error){
+   console.log("Error fetching data. ", error.message);
+ });
+}
 
+function parseData(protein_info){
+  console.log(protein_info);
 }
