@@ -2,52 +2,41 @@
 <html>
 <head>
 	<title>CMSC498O Final Project</title>
-    <script src="http://d3js.org/d3.v5.min.js"></script>
+	<script src="http://d3js.org/d3.v5.min.js"></script>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div id="top_information_panel" style="width: 95vw; height: 45vh;">
-		<div id="bar_graph" style="width: 60vw; height: 45vh; display: inline-block;">
-			<svg id="bar_svg" style="height: 100%; width: 100%;">
+	<div id="top_information_panel">
+		<div id="bar_graph" >
+			<svg id="bar_svg">
 			</svg>
 		</div>
-		<div id="protein_info" style="width: 30vw; height: 45vh; background-color: blue; display: inline-block; overflow: hidden;">
-			<h1 id="protein_name_header" align="center" style="color: white;"> Alanine </h1>
+		<div id="protein_info" >
+			<h1 id="protein_name_header" align="center"> Alanine </h1>
 			<center>
-				<img id="protein_image" src="imgs/Ala.gif" style="height: 30%; width: 40%;">
+				<img id="protein_image" src="imgs/Ala.gif" >
 			</center>
-			<div id="protein_name_row" style="height: 10%; width: 100%;">
-				<h2 id="name_label" style="padding-left: 25px;
-				color: white; display: inline-block;">
-				Protein Name:
-				</h2>
-				<h2 id="protein_name" style="color: red; padding-left: 5px; display: inline-block;">Alanine</h2>
+			<div id="protein_name_row">
+				<p id="name_label" > Protein Name: </p>
+				<p id="protein_name" >Alanine</p>
 			</div>
-			<div id="protein_symbol3_row" style="height: 10%; width: 100%;">
-				<h2 id="symbol3_label" style="padding-left: 25px;
-				color: white; display: inline-block;">
-				Symbol-3:
-				</h2>
-				<h2 id="symbol3" style="color: red; padding-left: 5px; display: inline-block;">Ala</h2>
+			<div id="protein_symbol3_row" >
+				<p id="symbol3_label" >Symbol-3:</p>
+				<p id="symbol3" >Ala</p>
 			</div>
-			<div id="protein_symbol1_row" style="height: 10%; width: 100%;">
-				<h2 id="symbol1_label" style="padding-left: 25px;
-				color: white; display: inline-block;">
-				Symbol-1:
-				</h2>
-				<h2 id="symbol1" style="color: red; padding-left: 5px; display: inline-block;">A</h2>
+			<div id="protein_symbol1_row">
+				<p id="symbol1_label">Symbol-1:</p>
+				<p id="symbol1">A</p>
 			</div>
-			<div id="protein_weight_row" style="height: 10%; width: 100%;">
-				<h2 id="weight_label" style="padding-left: 25px;
-				color: white; display: inline-block;">
-				Weight:
-				</h2>
-				<h2 id="weight" style="color: red; padding-left: 5px; display: inline-block;">89.10</h2>
+			<div id="protein_weight_row">
+				<p id="weight_label">Weight:</p>
+				<p id="weight">89.10</p>
 			</div>
 		</div>
 	</div>
-	<div id="bottom_panel" style="width: 95vw; height: 45vh; padding-top: 3px; overflow: hidden;">
-    <div id="description_panel" style="width: 25vw; height: 45vh; background-color: green; display: inline-block;"></div>
-		<div id="mass_graph" style="width: 65vw; height: 45vh; background-color: purple; display: inline-block;"></div>
+	<div id="bottom_panel">
+    	<div id="description_panel"></div>
+		<div id="mass_graph"></div>
 	</div>
 	<script src="http://localhost:8080/final.js"></script>
 </body>

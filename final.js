@@ -56,23 +56,23 @@ function constructBarGraph(protein_dict) {
       .attr("width", xScale.bandwidth())
       .attr("y", d => yScale(parseInt(protein_dict[d])))
       .attr("height", d => height - margin - yScale(parseInt(protein_dict[d])))
-      .attr("fill", "blue")
+      .attr("fill", "#2B81C6")
       .on("mouseover", function(d) {
             d3.select(this)
-            	.attr("fill", "red");
+            	.attr("fill", "#F25757");
         })
       .on("mouseout", function(d, i) {
             if (this != selectedBar){
               d3.select(this).attr("fill", function() {
-                  return "blue";
+                  return "#2B81C6";
               });
             }
         })
       .on("click", function(d){
         if (selectedBar){
-          d3.select(selectedBar).attr("fill", "blue");
+          d3.select(selectedBar).attr("fill", "#2B81C6");
         }
-        d3.select(this).attr("fill", "red")
+        d3.select(this).attr("fill", "#F25757")
         selectedBar = this;
         getProteinData(d);
       });
@@ -94,7 +94,7 @@ function constructBarGraph(protein_dict) {
               .attr("y", -25 + margin / 2)
               .attr("dy", "1em")
               .style("text-anchor", "middle")
-              .text("Occurences of individual proteins in string");
+              .text("Number of Occurences");
 }
 
 function getProteinData(selected_protein) {
