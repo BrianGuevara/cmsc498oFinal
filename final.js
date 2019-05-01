@@ -4,11 +4,12 @@ var selectedBar = null;
 function getData() {
   // TODO: replace with proper code to fetch data from the server
   // and transform into JSON format
-  return fetch('http://localhost:8080/data/proteins.txt')
+  return fetch('http://localhost:8080/data/rna.txt')
   .then(response => response.text().then(function (text){
-    var protein_dict = processData(text);
+    var aminoAcids = translate(text);
+    var protein_dict = processData(aminoAcids);
     constructBarGraph(protein_dict);
-    listProteins(text);
+    listProteins(aminoAcids);
   }))
   .catch(function (error){
     console.log("Error fetching data. ", error.message);
@@ -141,4 +142,88 @@ function updateInfoPanel(protein_info, selected_protein){
 
 function listProteins(proteins) {
   document.getElementById("proteins").innerHTML = proteins;
+}
+
+function translate(rna){
+  var aminoAcids = ""
+
+  var i = 0;
+
+  while(i < rna.length){
+      var codon = rna.substring(i, i+3);
+      aminoAcids += getAA(codon);
+      i = i+3;
+  }
+
+  return aminoAcids;
+}
+
+function getAA(codon){
+  switch(codon) {
+    case "GCA": return "A";
+    case "GCC": return "A";
+    case "GCG": return "A";
+    case "GCU": return "A";
+    case "UGC": return "C";
+    case "UGU": return "C";
+    case "GAC": return "D";
+    case "GAU": return "D";
+    case "GAA": return "E";
+    case "GAG": return "E";
+    case "UUC": return "F";
+    case "UUU": return "F";
+    case "GGA": return "G";
+    case "GGC": return "G";
+    case "GGG": return "G";
+    case "GGU": return "G";
+    case "CAC": return "H";
+    case "CAU": return "H";
+    case "AUA": return "I";
+    case "AUC": return "I";
+    case "AUU": return "I";
+    case "AAA": return "K";
+    case "AAG": return "K";
+    case "CUA": return "L";
+    case "CUC": return "L";
+    case "CUG": return "L";
+    case "CUU": return "L";
+    case "UUA": return "L";
+    case "UUG": return "L";
+    case "AUG": return "M";
+    case "AAC": return "N";
+    case "AAU": return "N";
+    case "CCA": return "P";
+    case "CCC": return "P";
+    case "CCG": return "P";
+    case "CCU": return "P";
+    case "CAA": return "Q";
+    case "CAG": return "Q";
+    case "AGA": return "R";
+    case "AGG": return "R";
+    case "CGA": return "R";
+    case "CGC": return "R";
+    case "CGG": return "R";
+    case "CGU": return "R";
+    case "AGC": return "S";
+    case "AGU": return "S";
+    case "UCA": return "S";
+    case "UCC": return "S";
+    case "UCG": return "S";
+    case "UCU": return "S";
+    case "ACA": return "T";
+    case "ACC": return "T";
+    case "ACG": return "T";
+    case "ACU": return "T";
+    case "GUA": return "V";
+    case "GUC": return "V";
+    case "GUG": return "V";
+    case "GUU": return "V";
+    case "UGG": return "W";
+    case "UAC": return "Y";
+    case "UAU": return "Y";
+    case "UGA": return "";
+    case "UAA": return "";
+    case "UAG": return "";
+    default:    return "-1";
+  }
 }
