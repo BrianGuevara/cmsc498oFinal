@@ -104,30 +104,31 @@
 }
 
 #bottom_panel {
-    width: 95vw; 
-    height: 45vh; 
-    padding-top: 3px; 
-    overflow: hidden;
+    display: flex;
 }
 
 #description_panel {
     width: 25vw; 
-    height: 45vh; 
-    background-color: green; 
-    display: inline-block;
+    height: 45vh;
+    overflow: scroll;  
+    padding: 10px;
 }
 
 #mass_graph {
     width: 65vw; 
     height: 45vh; 
-    background-color: purple; 
-    display: inline-block;
 }
-#bar_graph, #protein_info {
+
+#bar_graph, #protein_info, #description_panel, #mass_graph {
     border-radius: 20px;
     border-color: #cccccc;
     border-style: solid;
     border-width: 1px;
     margin: 20px;
     box-shadow: 3px 3px #e2e2e2
+}
+
+#proteins {
+    width: 100%;
+    word-wrap: break-word;
 }

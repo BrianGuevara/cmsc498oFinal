@@ -8,6 +8,7 @@ function getData() {
   .then(response => response.text().then(function (text){
     var protein_dict = processData(text);
     constructBarGraph(protein_dict);
+    listProteins(text);
   }))
   .catch(function (error){
     console.log("Error fetching data. ", error.message);
@@ -136,4 +137,8 @@ function updateInfoPanel(protein_info, selected_protein){
   var weight = d3.select("#weight");
   weight.text(target["weight"]);
 
+}
+
+function listProteins(proteins) {
+  document.getElementById("proteins").innerHTML = proteins;
 }
