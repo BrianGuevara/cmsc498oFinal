@@ -89,6 +89,20 @@
     padding-left: 5px; 
 }
 
+#formula_row {
+    display: flex;
+    margin-top: 5px;
+ }
+ 
+ #formula_label {
+     padding-left: 25px;
+ }
+ 
+ #formula {
+     color: #F25757; 
+     padding-left: 5px;
+ }
+
 #protein_weight_row {
    display: flex;
    margin-top: 5px;

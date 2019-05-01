@@ -135,6 +135,9 @@ function updateInfoPanel(protein_info, selected_protein){
   var symbol1 = d3.select("#symbol1");
   symbol1.text(target["symbol-1"]);
 
+  var formula = d3.select("#formula");
+  formula.text(target["formula"]);
+
   var weight = d3.select("#weight");
   weight.text(target["weight"]);
 
