@@ -12,12 +12,15 @@ function getData() {
     listProteins(aminoAcids);
 
     var aa = document.getElementsByClassName("aa")
-
+  
     for(i = 0; i < aa.length; i++){
       aa[i].addEventListener("click", function(event){
-        getSelectedAA(this)
+        var selectedAA = getSelectedAA(this)
+        
+        updateSpectrum(selectedAA)
       })
     }
+
   }))
   .catch(function (error){
     console.log("Error fetching data. ", error.message);
@@ -250,7 +253,7 @@ function getAA(codon){
 
 function getSelectedAA(selected){
   /* Courtesy of https://css-tricks.com/highlight-certain-number-of-characters/ */
-  
+
   var aa = document.getElementsByClassName("aa");
   for(var i = 0; i < aa.length; i++){
     aa[i].classList.remove("selected")
@@ -258,13 +261,63 @@ function getSelectedAA(selected){
   selected.classList.add("selected");
 
   var nextSpan = selected;
-  var allSelected = "";
+  var allSelected = selected.innerHTML;
 
   for(i = 1; i < 10; i++){
-    allSelected += nextSpan.innerHTML;
     nextSpan = nextSpan.nextSibling;
     nextSpan.classList.add("selected")
+    allSelected += nextSpan.innerHTML;
     
   }
 
+  return allSelected;
+}
+
+function updateSpectrum(selectedAA){
+  fetch('http://localhost:8080/proteins.json')
+ .then(response => response.json().then(json => {
+    var spectrum = createSpectrum(getWeights(json, selectedAA))
+
+    console.log(spectrum)
+ })
+ )
+}
+
+function getWeights(json, selectedAA){
+  var individualWeights = selectedAA.split("").map(aa => {
+    var weight;
+     for(var i = 0; i < json.length; i++){
+       if(json[i]["symbol-1"] === aa){
+         weight = json[i].weight
+       }
+     }
+    return weight
+  })
+  
+  return individualWeights
+}
+
+function createSpectrum(weights){
+  var spectrum = [];
+
+  for(var i = 0; i < weights.length; i++){
+    leftArray = weights.slice(0, i+1)
+    rightArray = weights.slice(i+1, weights.length)
+
+    leftSum = leftArray.reduce(getSum)
+
+    if(rightArray.length !== 0){
+      rightSum = rightArray.reduce(getSum)
+    }
+    
+
+    spectrum.push(leftSum)
+    spectrum.push(rightSum)
+  }
+
+  function getSum(sum, num){
+    return sum + num
+  }
+
+  return spectrum
 }
