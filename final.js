@@ -305,14 +305,18 @@ function createSpectrum(weights){
     rightArray = weights.slice(i+1, weights.length)
 
     leftSum = leftArray.reduce(getSum)
+    spectrum.push(leftSum)
 
     if(rightArray.length !== 0){
       rightSum = rightArray.reduce(getSum)
+      spectrum.push(rightSum)
     }
     
+    /*console.log(leftArray)
+    console.log(leftSum)
+    console.log(rightArray)
+    console.log(rightSum)*/
 
-    spectrum.push(leftSum)
-    spectrum.push(rightSum)
   }
 
   function getSum(sum, num){
