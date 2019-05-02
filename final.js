@@ -10,6 +10,14 @@ function getData() {
     var protein_dict = processData(aminoAcids);
     constructBarGraph(protein_dict);
     listProteins(aminoAcids);
+
+    var aa = document.getElementsByClassName("aa")
+
+    for(i = 0; i < aa.length; i++){
+      aa[i].addEventListener("click", function(event){
+        getSelectedAA(this)
+      })
+    }
   }))
   .catch(function (error){
     console.log("Error fetching data. ", error.message);
@@ -144,7 +152,16 @@ function updateInfoPanel(protein_info, selected_protein){
 }
 
 function listProteins(proteins) {
-  document.getElementById("proteins").innerHTML = proteins;
+  var numChars = proteins.length;
+
+  var newHTML = "";
+
+  for(i = 0; i <= numChars; i++){
+    newHTML += ("<span class=\"aa\">" + proteins[i] + "</span>");
+  }
+
+  document.getElementById("proteins").innerHTML = newHTML;
+
 }
 
 function translate(rna){
@@ -229,4 +246,25 @@ function getAA(codon){
     case "UAG": return "";
     default:    return "-1";
   }
+}
+
+function getSelectedAA(selected){
+  /* Courtesy of https://css-tricks.com/highlight-certain-number-of-characters/ */
+  
+  var aa = document.getElementsByClassName("aa");
+  for(var i = 0; i < aa.length; i++){
+    aa[i].classList.remove("selected")
+  }
+  selected.classList.add("selected");
+
+  var nextSpan = selected;
+  var allSelected = "";
+
+  for(i = 1; i < 10; i++){
+    allSelected += nextSpan.innerHTML;
+    nextSpan = nextSpan.nextSibling;
+    nextSpan.classList.add("selected")
+    
+  }
+
 }

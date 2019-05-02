@@ -150,3 +150,11 @@
     width: 100%;
     word-wrap: break-word;
 }
+
+.selected {
+    background-color: yellow;
+}
+
+span {
+    cursor: pointer;
+}
