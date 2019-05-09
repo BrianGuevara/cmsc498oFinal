@@ -285,9 +285,9 @@ function updateSpectrum(selectedAA){
     //console.log(spectrum)
 
     var slider = document.getElementById("myRange")
-    updateSlider(slider.value, weights)
+    updateSlider(slider.value)
     slider.oninput = function() {
-      updateSlider(this.value, weights)
+      updateSlider(this.value)
     }
  })
  )
@@ -412,7 +412,7 @@ function updatePeptide(selectedAA){
   document.getElementById("peptide").innerHTML = newHTML;
 }
 
-function updateSlider(value, weights){
+function updateSlider(value){
   var pepChars = document.getElementsByClassName("peptideChar")
       for(var i = 0; i < pepChars.length; i++){
         pepChars[i].classList.remove("selectedPeps")
@@ -420,44 +420,75 @@ function updateSlider(value, weights){
 
       if(value <= 10){
         pepChars[0].classList.add("selectedPeps")
-        d3.select("#spectrum_svg").select("rect:nth-child(1)").attr("fill", "#F25757")
+        updateMassBar(1)
       } else if(value <= 20){
         for(var i = 0; i < 2; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(3)
       }else if(value <= 30){
         for(var i = 0; i < 3; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(5)
       }else if(value <= 40){
         for(var i = 0; i < 4; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(7)
       }else if(value <= 50){
         for(var i = 0; i < 5; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(9)
       }else if(value <= 60){
         for(var i = 0; i < 6; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(11)
       }else if(value <= 70){
         for(var i = 0; i < 7; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(13)
       }else if(value <= 80){
         for(var i = 0; i < 8; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(15)
       }else if(value <= 90){
         for(var i = 0; i < 9; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(17)
       }else if(value <= 100){
         for(var i = 0; i < 10; i++){
           pepChars[i].classList.add("selectedPeps")
         }
+        updateMassBar(19)
       }
+}
+
+function updateMassBar(num){
+  console.log(num)
+  var numRects = d3.select("#spectrum_svg").selectAll("rect").size()
+  
+  if(numRects === 17 && num === 17){
+    d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
+    d3.select("#spectrum_svg").select("rect:nth-child(2)").attr("fill", "#F25757")
+    d3.select("#spectrum_svg").select("rect:nth-child(1)").attr("fill", "#f4e285")
+  } else if(numRects === 17 && num === 19){
+    d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
+    d3.select("#spectrum_svg").select("rect:nth-child(17)").attr("fill", "#F25757")
+  } else {
+    d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
+    d3.select("#spectrum_svg").select("rect:nth-child(" + num + ")").attr("fill", "#F25757")
+
+    if(num < 19){
+      d3.select("#spectrum_svg").select("rect:nth-child(" + (num + 1) + ")").attr("fill", "#f4e285")
+    }
+  }
+  
 }
 
 function removeChildren(el) {
