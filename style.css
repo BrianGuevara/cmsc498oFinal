@@ -129,9 +129,64 @@
 }
 
 #mass_graph {
+    display: flex;
+    flex-direction: column;
     width: 600px; 
     height: 320px; 
 }
+
+#spectrum_svg {
+    width: 500px;
+    height: 200px;
+    margin-top: 75px;
+    margin-left: 25px;
+    align-content: center;
+}
+
+#peptide {
+    justify-content: center;
+    width: 300px;
+    margin-left: 150px;
+    display: flex;
+}
+
+/* Code for Slider: https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+.slidecontainer {
+    justify-content: center;
+    width: 50%;
+    margin-left: 150px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 7px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #F25757;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #F25757;
+    cursor: pointer;
+  }
+
 
 #bar_graph, #protein_info, #description_panel, #mass_graph {
     border-radius: 20px;

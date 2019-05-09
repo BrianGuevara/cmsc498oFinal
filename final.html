@@ -43,7 +43,13 @@
 			<h1 align="center">Amino Acids</h1>
 			<p id="proteins"></p>
 		</div>
-		<div id="mass_graph"></div>
+		<div id="mass_graph">
+			<h1 id="peptide"></h1>
+			<div class="slidecontainer">
+					<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+			</div>
+			<svg id="spectrum_svg"></svg>
+		</div>
 	</div>
 	<script src="http://localhost:8080/final.js"></script>
 </body>

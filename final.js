@@ -276,9 +276,18 @@ function getSelectedAA(selected){
 function updateSpectrum(selectedAA){
   fetch('http://localhost:8080/proteins.json')
  .then(response => response.json().then(json => {
+    updatePeptide(selectedAA)
     var spectrum = createSpectrum(getWeights(json, selectedAA))
 
+    spectrumGraph(spectrum)
     console.log(spectrum)
+
+    var slider = document.getElementById("myRange")
+    slider.oninput = function() {
+      //update spectrum
+    }
+
+
  })
  )
 }
@@ -304,11 +313,11 @@ function createSpectrum(weights){
     leftArray = weights.slice(0, i+1)
     rightArray = weights.slice(i+1, weights.length)
 
-    leftSum = leftArray.reduce(getSum)
+    leftSum = +(leftArray.reduce(getSum).toFixed(2))
     spectrum.push(leftSum)
 
     if(rightArray.length !== 0){
-      rightSum = rightArray.reduce(getSum)
+      rightSum = +(rightArray.reduce(getSum).toFixed(2))
       spectrum.push(rightSum)
     }
     
@@ -324,4 +333,92 @@ function createSpectrum(weights){
   }
 
   return spectrum
+}
+
+function spectrumGraph(spectrum){
+  var massSpectrum = calcOccurences(spectrum)
+
+  var occurrences = Object.values(massSpectrum)
+  var mass = Object.keys(massSpectrum)
+  var svg = d3.select("#spectrum_svg")
+
+  removeChildren(svg);
+
+  var margin = 50
+  var height = 200
+  var width = 500
+
+  var xScale = d3.scaleLinear()
+                 .domain([0, 1500])
+                 .range([0, width - margin]);
+  var yScale = d3.scaleLinear()
+                 .domain([0, d3.max(occurrences)])
+                 .range([height - margin, 0]);
+
+  svg.selectAll("rect")
+      .data(mass)
+      .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", d => xScale(d) + margin)
+      .attr("width", "3px")
+      .attr("y", d => yScale(parseInt(massSpectrum[d])))
+      .attr("height", d => height - margin - yScale(parseInt(massSpectrum[d])))
+      .attr("fill", "#2B81C6")
+
+  svg.append("g")
+      .attr("transform", "translate(" + margin + "," + (height - margin) + ")")
+      .call(d3.axisBottom(xScale))
+      .selectAll("text")
+      .attr("y", 0)
+      .attr("x", 9)
+      .attr("transform", "rotate(90)")
+      .style("text-anchor", "start");
+
+  /*svg.append("g")
+      .attr("transform", "translate(" + margin + ",0)")
+      .call(d3.axisLeft(yScale));*/
+      
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", 0 - (height / 2))
+      .attr("y", -25 + margin / 2)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle");
+      
+
+}
+
+function calcOccurences(spectrum){
+  var result = {};
+
+  for (var i = 0; i < spectrum.length; i++){
+    var mass = spectrum[i];
+
+    if (mass in result){
+      result[mass] = result[mass] + 1;
+    } else {
+      result[mass] = 1;
+    }
+  }
+
+  return result;
+}
+
+function updatePeptide(selectedAA){
+  console.log(selectedAA)
+  var newHTML = "";
+
+  for(i = 0; i < selectedAA.length; i++){
+    newHTML += ("<span class=\"peptideChar\">" + selectedAA[i] + "</span>");
+    console.log(newHTML)
+  }
+
+  document.getElementById("peptide").innerHTML = newHTML;
+}
+
+function removeChildren(el) {
+  while(el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
 }
