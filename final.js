@@ -277,62 +277,18 @@ function updateSpectrum(selectedAA){
   fetch('http://localhost:8080/proteins.json')
  .then(response => response.json().then(json => {
     updatePeptide(selectedAA)
-    var spectrum = createSpectrum(getWeights(json, selectedAA))
+    var weights = getWeights(json, selectedAA)
+    var spectrum = createSpectrum(weights)
+    console.log(weights)
 
     spectrumGraph(spectrum)
     //console.log(spectrum)
 
     var slider = document.getElementById("myRange")
-    updateSlider(slider.value)
+    updateSlider(slider.value, weights)
     slider.oninput = function() {
-      updateSlider(this.value)
-      /*var pepChars = document.getElementsByClassName("peptideChar")
-      for(var i = 0; i < pepChars.length; i++){
-        pepChars[i].classList.remove("selectedPeps")
-      }
-
-      if(this.value <= 10){
-        pepChars[0].classList.add("selectedPeps")
-      } else if(this.value <= 20){
-        for(var i = 0; i < 2; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 30){
-        for(var i = 0; i < 3; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 40){
-        for(var i = 0; i < 4; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 50){
-        for(var i = 0; i < 5; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 60){
-        for(var i = 0; i < 6; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 70){
-        for(var i = 0; i < 7; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 80){
-        for(var i = 0; i < 8; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 90){
-        for(var i = 0; i < 9; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }else if(this.value <= 100){
-        for(var i = 0; i < 10; i++){
-          pepChars[i].classList.add("selectedPeps")
-        }
-      }*/
+      updateSlider(this.value, weights)
     }
-
-
  })
  )
 }
@@ -407,7 +363,7 @@ function spectrumGraph(spectrum){
       .data(mass)
       .enter()
       .append("rect")
-      //.attr("class", "bar")
+      .attr("id", d => "m" + d)
       .attr("x", d => (xScale(d) + margin))
       .attr("y", d => yScale(parseInt(massSpectrum[d])))
       .attr("width", "3px")
@@ -456,7 +412,7 @@ function updatePeptide(selectedAA){
   document.getElementById("peptide").innerHTML = newHTML;
 }
 
-function updateSlider(value){
+function updateSlider(value, weights){
   var pepChars = document.getElementsByClassName("peptideChar")
       for(var i = 0; i < pepChars.length; i++){
         pepChars[i].classList.remove("selectedPeps")
@@ -464,6 +420,7 @@ function updateSlider(value){
 
       if(value <= 10){
         pepChars[0].classList.add("selectedPeps")
+        d3.select("#spectrum_svg").select("rect:nth-child(1)").attr("fill", "#F25757")
       } else if(value <= 20){
         for(var i = 0; i < 2; i++){
           pepChars[i].classList.add("selectedPeps")
@@ -507,5 +464,4 @@ function removeChildren(el) {
   while(el.firstChild) {
     el.removeChild(el.firstChild);
   }
-  console.log("here")
 }

@@ -138,13 +138,13 @@
 #spectrum_svg {
     width: 500px;
     height: 200px;
-    margin-top: 75px;
+    margin-top: 50px;
     margin-left: 25px;
     align-content: center;
 }
 
 #peptide {
-    justify-content: center;
+    justify-content: space-between;
     width: 300px;
     margin-left: 150px;
     display: flex;
