@@ -150,6 +150,10 @@
     display: flex;
 }
 
+.selectedPeps {
+    color : #F25757;
+}
+
 /* Code for Slider: https://www.w3schools.com/howto/howto_js_rangeslider.asp */
 .slidecontainer {
     justify-content: center;
