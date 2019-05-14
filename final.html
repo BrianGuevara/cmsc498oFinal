@@ -8,6 +8,9 @@
 <body>
 	<div id="top_information_panel">
 		<div id="bar_graph" >
+			<div class="tooltip">Help
+				<span class="tooltiptext">Click on a bar to reveal information about the Protein.</span>
+			</div>
 			<svg id="bar_svg">
 			</svg>
 		</div>
@@ -30,8 +33,8 @@
 			</div>
 			<div id="formula_row">
 					<p id="formula_label">Formula:</p>
-					<p id="formula">C&#x2083H&#x2087NO&#x2082</p>
-				</div>
+					<p id="formula">C</p>
+			</div>
 			<div id="protein_weight_row">
 				<p id="weight_label">Weight:</p>
 				<p id="weight">89.10</p>
@@ -39,7 +42,7 @@
 		</div>
 	</div>
 	<div id="bottom_panel">
-    	<div id="description_panel">
+    <div id="description_panel">
 			<h1 align="center">Amino Acids</h1>
 			<p id="proteins"></p>
 		</div>
@@ -48,7 +51,9 @@
 			<div class="slidecontainer">
 					<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
 			</div>
-			<svg id="spectrum_svg"></svg>
+			<p id="mass_graph_prompt">Click on a protein chain in the left box to see the mass graph.</p>
+			<svg id="spectrum_svg">
+			</svg>
 		</div>
 	</div>
 	<script src="http://localhost:8080/final.js"></script>

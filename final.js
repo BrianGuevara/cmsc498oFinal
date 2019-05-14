@@ -12,11 +12,11 @@ function getData() {
     listProteins(aminoAcids);
 
     var aa = document.getElementsByClassName("aa")
-  
+
     for(i = 0; i < aa.length; i++){
       aa[i].addEventListener("click", function(event){
         var selectedAA = getSelectedAA(this)
-        
+
         updateSpectrum(selectedAA)
       })
     }
@@ -267,7 +267,7 @@ function getSelectedAA(selected){
     nextSpan = nextSpan.nextSibling;
     nextSpan.classList.add("selected")
     allSelected += nextSpan.innerHTML;
-    
+
   }
 
   return allSelected;
@@ -303,7 +303,7 @@ function getWeights(json, selectedAA){
      }
     return weight
   })
-  
+
   return individualWeights
 }
 
@@ -321,7 +321,7 @@ function createSpectrum(weights){
       rightSum = +(rightArray.reduce(getSum).toFixed(2))
       spectrum.push(rightSum)
     }
-    
+
     /*console.log(leftArray)
     console.log(leftSum)
     console.log(rightArray)
@@ -345,6 +345,7 @@ function spectrumGraph(spectrum){
 
   mass = mass.map(i => parseFloat(i))
 
+  removeChildren(document.getElementById("mass_graph_prompt"))
   removeChildren(document.getElementById("spectrum_svg"));
 
 
@@ -382,7 +383,7 @@ function spectrumGraph(spectrum){
   /*svg.append("g")
       .attr("transform", "translate(" + margin + ",0)")
       .call(d3.axisLeft(yScale));*/
-      
+
 
 }
 
@@ -472,7 +473,7 @@ function updateSlider(value){
 function updateMassBar(num){
   console.log(num)
   var numRects = d3.select("#spectrum_svg").selectAll("rect").size()
-  
+
   if(numRects === 17 && num === 17){
     d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
     d3.select("#spectrum_svg").select("rect:nth-child(2)").attr("fill", "#F25757")
@@ -488,7 +489,7 @@ function updateMassBar(num){
       d3.select("#spectrum_svg").select("rect:nth-child(" + (num + 1) + ")").attr("fill", "#f4e285")
     }
   }
-  
+
 }
 
 function removeChildren(el) {

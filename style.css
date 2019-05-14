@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Montserrat';
     src: url('./Montserrat/Montserrat-Regular.ttf')
-  } 
+  }
 
 * {
     margin: 0px;
@@ -10,7 +10,7 @@
 }
 
 #top_information_panel {
-    /*width: 95vw; 
+    /*width: 95vw;
     height: 45vh;*/
     display: flex;
 }
@@ -22,14 +22,14 @@
 }
 
 #bar_svg {
-    height: 100%; 
+    height: 100%;
     width: 100%;
 }
 
 #protein_info {
-    /*width: 30vw; 
-    height: 45vh;  
-    display: inline-block; 
+    /*width: 30vw;
+    height: 45vh;
+    display: inline-block;
     overflow: hidden;*/
     width: 300px;
     height: 325x;
@@ -41,7 +41,7 @@
 }
 
 #protein_image {
-    height: 30%; 
+    height: 30%;
     width: 40%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -57,7 +57,7 @@
 }
 
 #protein_name {
-    color: #F25757; 
+    color: #F25757;
     padding-left: 5px;
 }
 
@@ -71,8 +71,8 @@
 }
 
 #symbol3 {
-    color: #F25757; 
-    padding-left: 5px; 
+    color: #F25757;
+    padding-left: 5px;
 }
 
 #protein_symbol1_row {
@@ -85,21 +85,21 @@
 }
 
 #symbol1 {
-    color:#F25757; 
-    padding-left: 5px; 
+    color:#F25757;
+    padding-left: 5px;
 }
 
 #formula_row {
     display: flex;
     margin-top: 5px;
  }
- 
+
  #formula_label {
      padding-left: 25px;
  }
- 
+
  #formula {
-     color: #F25757; 
+     color: #F25757;
      padding-left: 5px;
  }
 
@@ -113,7 +113,7 @@
 }
 
 #weight {
-    color: #F25757; 
+    color: #F25757;
     padding-left: 5px;
 }
 
@@ -122,17 +122,17 @@
 }
 
 #description_panel {
-    width: 300px; 
+    width: 300px;
     height: 300px;
-    overflow: scroll;  
+    overflow: scroll;
     padding: 10px;
 }
 
 #mass_graph {
     display: flex;
     flex-direction: column;
-    width: 600px; 
-    height: 320px; 
+    width: 600px;
+    height: 320px;
 }
 
 #spectrum_svg {
@@ -151,6 +151,46 @@
     color: #f4e285;
 }
 
+#mass_graph_prompt {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  float: right;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+
 .selectedPeps {
     color : #F25757;
 }
@@ -166,7 +206,7 @@
     -webkit-appearance: none;
     width: 100%;
     height: 7px;
-    border-radius: 5px;   
+    border-radius: 5px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
@@ -179,11 +219,11 @@
     appearance: none;
     width: 15px;
     height: 15px;
-    border-radius: 50%; 
+    border-radius: 50%;
     background: #F25757;
     cursor: pointer;
   }
-  
+
   .slider::-moz-range-thumb {
     width: 15px;
     height: 15px;
