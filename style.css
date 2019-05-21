@@ -138,7 +138,7 @@
 #spectrum_svg {
     width: 500px;
     height: 200px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 25px;
     align-content: center;
 }
@@ -257,4 +257,19 @@
 
 span {
     cursor: pointer;
+}
+
+#selected_weights {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 150px;
+}
+
+#left_weight{
+    color: #F25757;
+}
+
+#right_weight{
+    color: #f4e285;    
 }
