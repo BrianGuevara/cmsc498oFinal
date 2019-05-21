@@ -475,14 +475,45 @@ function updateMassBar(num){
   //console.log(num)
   var numRects = d3.select("#spectrum_svg").selectAll("rect").size()
 
-  if(numRects === 17 && num === 17){
+  if(numRects === 15 && num === 15){
+      d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
+      d3.select("#spectrum_svg").select("rect:nth-child(4)").attr("fill", "#F25757")
+      d3.select("#spectrum_svg").select("rect:nth-child(3)").attr("fill", "#f4e285")
+
+      document.getElementById("left_weight").innerHTML = d3.select("#spectrum_svg").select("rect:nth-child(4)").data()[0]
+
+     document.getElementById("right_weight").innerHTML = d3.select("#spectrum_svg").select("rect:nth-child(3)").data()[0]
+
+} else if(numRects === 15 && num === 17){
+  d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
+  d3.select("#spectrum_svg").select("rect:nth-child(2)").attr("fill", "#F25757")
+  d3.select("#spectrum_svg").select("rect:nth-child(1)").attr("fill", "#f4e285")
+
+  document.getElementById("left_weight").innerHTML = d3.select("#spectrum_svg").select("rect:nth-child(2)").data()[0]
+
+  document.getElementById("right_weight").innerHTML = d3.select("#spectrum_svg").select("rect:nth-child(1)").data()[0]
+
+} else if(numRects === 15 && num === 19){
+  d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
+  d3.select("#spectrum_svg").select("rect:nth-child(15)").attr("fill", "#F25757")
+
+  document.getElementById("right_weight").innerHTML = 0
+
+} else if(numRects === 17 && num === 17){
     d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
     d3.select("#spectrum_svg").select("rect:nth-child(2)").attr("fill", "#F25757")
     d3.select("#spectrum_svg").select("rect:nth-child(1)").attr("fill", "#f4e285")
+
+    document.getElementById("left_weight").innerHTML = d3.select("#spectrum_svg").select("rect:nth-child(2)").data()[0]
+
+    document.getElementById("right_weight").innerHTML = d3.select("#spectrum_svg").select("rect:nth-child(1)").data()[0]
+
+
   } else if(numRects === 17 && num === 19){
     d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
     d3.select("#spectrum_svg").select("rect:nth-child(17)").attr("fill", "#F25757")
-    document.getElementById("right_weight").innerHTML = 0;
+
+    document.getElementById("right_weight").innerHTML = 0
   } else {
     d3.select("#spectrum_svg").selectAll("rect").attr("fill", "#2B81C6")
     d3.select("#spectrum_svg").select("rect:nth-child(" + num + ")").attr("fill", "#F25757")
